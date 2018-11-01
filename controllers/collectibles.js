@@ -1,5 +1,21 @@
 const models = require('../models');
 
+module.exports.index = (req, res) => {
+	/*
+	models.Collectible.findAll()
+		.then(collectibles => {
+			let string = '';
+
+			for (const coll in collectibles){
+				string = string + getCollectibleText(coll)
+			}
+		});
+	*/
+
+	models.Collectible.findAll()
+		.then(collectibles => res.json(collectibles));
+};
+
 module.exports.show = (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	if (!id) {

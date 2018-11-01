@@ -7,6 +7,8 @@ const controller = require('../controllers/collectibles');
 //  res.send('respond with a resource');
 //});
 
+router.get('/', controller.index);
+
 router.get('/:id', controller.show);
 
 module.exports = router;
