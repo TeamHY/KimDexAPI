@@ -25,7 +25,8 @@ const Collectible = sequelize.define('collectibles', {
 		allowNull: true
 	}
 }, {
-	tableName: 'collectibles'
+	tableName: 'collectibles',
+	timestamps: false
 });
 
 module.exports = {
