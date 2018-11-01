@@ -3,6 +3,7 @@ const sequelize = new Sequelize('kimdex', 'kimdex', 'teamhy1101', {
 	host: 'localhost',
 	dialect: 'mysql'
 });
+const DataTypes = require('sequelize/lib/data-types');
 
 const Collectible = sequelize.define('collectibles', {
 	id: {
