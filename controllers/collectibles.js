@@ -15,10 +15,15 @@ module.exports.show = (req, res) => {
 			return res.status(404).send('NULL');
 		}
 
-		return res.send(collectible)
+		return res.send(getCollectibleText(collectible))
 	});
 };
 
 function getCollectibleText(collectible) {
-	//return `(${collectible.}
+	return `(${pad(collectible.id, 3)})${collectible.name}(${collectible.actived ? 'A' : 'P'}): ${collectible.description}`
+}
+		
+function pad(n, width) {
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 }
