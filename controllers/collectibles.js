@@ -1,6 +1,10 @@
 const models = require('../models');
 
 module.exports.show = (req, res) => {
+	if (req.params.id == 'upload') {
+		return res.render('update');
+	}
+
 	const id = parseInt(req.params.id, 10);
 	if (!id) {
 		return res.status(400).send('NULL');
