@@ -33,7 +33,7 @@ module.exports.update = (req, res) => {
 				id: texts[i].replace(reg, '$1')
 			}
 		}).then(collectible => {
-			if (collectible) {
+			if (!collectible) {
 				models.Collectible.create({
 					id: texts[i].replace(reg, '$1'),
 					name: texts[i].replace(reg, '$2'),
