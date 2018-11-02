@@ -8,10 +8,14 @@ const controller = require('../controllers/collectibles');
 //});
 
 router.get('/', (req, res) => {
-	res.render('update')
+	res.send('검색어를 입력해주세요.')
 });
 
 router.get('/:id', controller.show);
+
+router.get('/uplode', (req, res) => {
+	res.render('update')
+});
 
 router.post('/update', controller.update);
 
