@@ -20,7 +20,41 @@ module.exports.show = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-	console.log(req.body.notepad_text);
+	const texts = req.body.notepad_text.split(/\r\n\r\n|\r\r|\n\n/);
+	const reg = /^\((\d{3})\)(.*)\((P|A)\)\s:\s(.*)/;
+
+	for (let i in texts){
+		if (!texts[i]){
+			continue;
+		}
+
+		models.Collectible.findOne({
+			where: {
+				id: id
+			}
+		}).then(collectible => {
+			if (collectible) {
+				models.Collectible.create({
+					id: texts[i].replace(reg, '$1'),
+					name: texts[i].replace(reg, '$2'),
+					actived: texts[i].replace(reg, '$3') === 'A' ? '1' : '0',
+					description: texts[i].replace(reg, '$4')
+				})
+					.catch(err => {
+						console.error(err);
+					});
+			} else {
+				models.Collectible.update({
+					name: texts[i].replace(reg, '$2'),
+					actived: texts[i].replace(reg, '$3') === 'A' ? '1' : '0',
+					description: texts[i].replace(reg, '$4')
+				}, {where: {id: texts[i].replace(reg, '$1')}})
+					.catch(err => {
+						console.error(err);
+					});
+			}
+		});
+	}
 };
 
 function getCollectibleText(collectible) {
