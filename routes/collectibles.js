@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', controller.show);
 
-router.get('/uplode', (req, res) => {
+router.get('/upload', (req, res) => {
 	res.render('update')
 });
 
