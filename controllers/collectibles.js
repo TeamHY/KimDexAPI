@@ -30,7 +30,7 @@ module.exports.update = (req, res) => {
 
 		models.Collectible.findOne({
 			where: {
-				id: id
+				id: texts[i].replace(reg, '$1')
 			}
 		}).then(collectible => {
 			if (collectible) {
