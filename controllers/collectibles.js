@@ -2,7 +2,7 @@ const models = require("../models");
 
 module.exports.show = (req, res) => {
   if (req.params.id == "upload") {
-    return res.render("update");
+    return res.render("upload");
   }
 
   const id = parseInt(req.params.id, 10);

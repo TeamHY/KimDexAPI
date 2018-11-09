@@ -13,10 +13,6 @@ router.get("/", (req, res) => {
 
 router.get("/:id", controller.show);
 
-router.get("/upload", (req, res) => {
-  res.render("update");
-});
-
 router.post("/update", controller.update);
 
 module.exports = router;
