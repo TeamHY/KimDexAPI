@@ -47,8 +47,7 @@ const Tip = sequelize.define(
     }
   },
   {
-    tableName: "tips",
-    timestamps: false
+    tableName: "tips"
   }
 );
 
