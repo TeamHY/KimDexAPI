@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 const collectiblesRouter = require('./routes/collectibles');
+const tipsRouter = require('./routes/tips');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', indexRouter);
 app.use('/api/collectibles', collectiblesRouter);
+app.use('/api/tips', tipsRouter);
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');

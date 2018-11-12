@@ -38,7 +38,21 @@ const Collectible = sequelize.define(
   }
 );
 
+const Tip = sequelize.define(
+  "tips",
+  {
+    text: {
+      type: DataTypes.STRING(500),
+      allowNull: true
+    }
+  },
+  {
+    tableName: "tips"
+  }
+);
+
 module.exports = {
   sequelize: sequelize,
-  Collectible: Collectible
+  Collectible: Collectible,
+  Tip: Tip
 };
