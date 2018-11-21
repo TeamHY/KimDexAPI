@@ -1,6 +1,7 @@
 const models = require("../models");
 
 exports.index = (req, res) => {
+  resetId();
   models.Tip.findAll().then(tips => res.json(tips));
 };
 
@@ -75,3 +76,21 @@ exports.update = (req, res) => {
     })
     .then(tip => res.status(201).json(tip));
 };
+
+function resetId() {
+  models.Tip.findAll().then(tips => {
+    let i = 1;
+    tips.map(tip => {
+      models.Tip.update(
+        {
+          id: i++
+        },
+        {
+          where: {
+            id: tip.id
+          }
+        }
+      );
+    });
+  });
+}
