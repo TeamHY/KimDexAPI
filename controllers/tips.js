@@ -1,9 +1,9 @@
 const models = require("../models");
 
 exports.index = (req, res) => {
-  resetId().then(() => {
+  //resetId().then(() => {
     models.Tip.findAll().then(tips => res.json(tips));
-  });
+  //});
 };
 
 exports.show = (req, res) => {
