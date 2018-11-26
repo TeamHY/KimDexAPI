@@ -43,6 +43,8 @@ module.exports.update = (req, res) => {
           name: texts[i].replace(reg, "$2"),
           actived: texts[i].replace(reg, "$3") === "A" ? "1" : "0",
           description: texts[i].replace(reg, "$4")
+        }).then(() => {
+          res.status(201);
         }).catch(err => {
           console.error(err);
         });
@@ -54,12 +56,12 @@ module.exports.update = (req, res) => {
             description: texts[i].replace(reg, "$4")
           },
           { where: { id: texts[i].replace(reg, "$1") } }
-        ).catch(err => {
+        ).then(() => {
+          res.status(201);
+        }).catch(err => {
           console.error(err);
         });
       }
-    }).then(() => {
-      res.status(201);
     });
   }
 };
