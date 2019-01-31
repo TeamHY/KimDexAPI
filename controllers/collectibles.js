@@ -6,11 +6,11 @@ module.exports.index = (req, res) => {
 
 module.exports.show = (req, res) => {
   if (req.params.id == "upload") {
-    return res.render("update");
+    return res.render("upload");
   }
 
   const id = parseInt(req.params.id, 10);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send("NULL");
   }
 
@@ -29,7 +29,7 @@ module.exports.show = (req, res) => {
 
 module.exports.update = (req, res) => {
   const texts = req.body.notepad_text.split(/\r\n\r\n|\r\r|\n\n/);
-  const reg = /^\((\d{3})\)(.*)\((P|A)\)\s:\s(.*)/;
+  const reg = /^\s*\((\d{3})\)(.*)\((P|A)\)\s:\s(.*)\s*$/;
 
   for (let i in texts) {
     if (!texts[i]) {
@@ -64,6 +64,8 @@ module.exports.update = (req, res) => {
       }
     });
   }
+
+  return res.redirect('../upload')
 };
 
 function getCollectibleText(collectible) {
