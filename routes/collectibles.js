@@ -7,18 +7,16 @@ const controller = require("../controllers/collectibles");
 //  res.send('respond with a resource');
 //});
 
-router.get("/", (req, res) => {
-  res.send("검색어를 입력해주세요.");
-});
+router.get("/", controller.index);
 
 router.get("/:id", controller.show);
 
 router.post("/update", controller.update);
 
-router.get('/upload', (req, res) => {
-	res.render('update')
+router.get("/upload", (req, res) => {
+  res.render("update");
 });
 
-router.post('/update', controller.update);
+router.post("/update", controller.update);
 
 module.exports = router;
