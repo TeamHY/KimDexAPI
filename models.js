@@ -51,6 +51,23 @@ const Tip = sequelize.define(
   }
 );
 
+const Mod = sequelize.define(
+  "mods",
+  {
+    name: {
+      type: DataTypes.STRING(30),
+      allowNull: true
+    },
+    image_url: {
+      type: DataTypes.STRING(500),
+      allowNull: true
+    }
+  },
+  {
+    tableName: "mods"
+  }
+);
+
 module.exports = {
   sequelize: sequelize,
   Collectible: Collectible,
